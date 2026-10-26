@@ -116,9 +116,7 @@ class TestStreamingTokenReset(AioTestBase):
         try:
             server = aio.server(
                 interceptors=(_TokenResetInterceptor(),),
-                options=(
-                    ("grpc.max_send_message_length", 1024 * 1024 * 1024),
-                ),
+                options=(("grpc.max_send_message_length", 1024 * 1024 * 1024),),
             )
             server.add_generic_rpc_handlers((_generic_handler(),))
             port = server.add_insecure_port("[::]:0")
